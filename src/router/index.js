@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AppLayout from '@/layouts/App.vue'
+import DashboardLayout from '@/layouts/DashboardLayout.vue'
 
 const routes = [
   {
@@ -55,12 +56,17 @@ const routes = [
   },
   {
     path: '/dashboard',
-    component: () => import('@/layouts/DashboardLayout.vue'),
+    component: DashboardLayout,
     children: [
       {
         path: '',
-        name: 'dashboard',
+        name: 'dashboard-overview',
         component: () => import('@/views/Dashboard.vue')
+      },
+      {
+        path: 'events',
+        name: 'dashboard-events',
+        component: () => import('@/views/EventManagement.vue')
       }
     ]
   }

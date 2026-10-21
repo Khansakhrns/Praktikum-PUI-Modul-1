@@ -1,34 +1,29 @@
 <script setup lang="ts">
-import { RouterView, RouterLink } from 'vue-router'
+import { RouterView, RouterLink } from 'vue-router';
 </script>
 
 <template>
   <div class="dashboard-layout">
-    <!-- RAIL (Bilah Navigasi Terkunci) -->
+    <!-- RAIL: Navigasi samping yang posisinya terkunci (fixed) -->
     <aside class="dashboard-rail">
       <div class="rail-brand">
         <router-link to="/">Gatherly Organizer</router-link>
       </div>
-
       <nav class="rail-nav">
-        <router-link to="/dashboard" class="rail-link active">Overview</router-link>
-        <a href="#" class="rail-link">My Events</a>
-        <a href="#" class="rail-link">Attendees</a>
-        <a href="#" class="rail-link">QR Check-in</a>
+        <router-link to="/dashboard" class="rail-link" exact-active-class="active">Dashboard</router-link>
+        <router-link to="/dashboard/events" class="rail-link" active-class="active">Event Management</router-link>
       </nav>
-
       <div class="rail-footer">
         <router-link to="/" class="rail-link">&larr; Back to Public</router-link>
       </div>
     </aside>
 
-    <!-- PANE (Area Utama Konten Dinamis) -->
+    <!-- PANE: Area utama dinamis tempat konten berubah dan bisa digulir secara mandiri -->
     <main class="dashboard-pane">
       <header class="pane-header">
         <h1>Dashboard</h1>
         <div class="user-profile">Admin</div>
       </header>
-
       <div class="pane-content">
         <RouterView />
       </div>
@@ -37,8 +32,6 @@ import { RouterView, RouterLink } from 'vue-router'
 </template>
 
 <style scoped>
-/* Full-screen app layout (khas dashboard).
-   Tinggi dibatasi 100vh agar bagian rail tidak ikut terguyur ke atas saat pane di-scroll. */
 .dashboard-layout {
   display: flex;
   height: 100vh;
@@ -46,7 +39,6 @@ import { RouterView, RouterLink } from 'vue-router'
   background-color: var(--bg-gray);
 }
 
-/* RAIL STYLES */
 .dashboard-rail {
   width: 260px;
   background-color: #1c1948;
@@ -79,7 +71,7 @@ import { RouterView, RouterLink } from 'vue-router'
   color: #a0a0b0;
   text-decoration: none;
   font-weight: 500;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.25s, color 0.25s;
 }
 
 .rail-link:hover,
@@ -94,7 +86,6 @@ import { RouterView, RouterLink } from 'vue-router'
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* PANE STYLES */
 .dashboard-pane {
   flex: 1;
   display: flex;
